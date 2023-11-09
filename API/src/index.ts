@@ -15,17 +15,14 @@ async function start() {
     app.db = mongo.db();
 
     // body parser
-
     app.use(body.json({
       limit: '500kb'
     }));
 
     // Routes
-
     app.use('/customers', require('./routes/customers'));
 
     // Start server
-
     app.listen(3000, () => {
       console.log('Server is running on port 3000');
     });

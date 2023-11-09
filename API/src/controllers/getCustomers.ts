@@ -1,5 +1,3 @@
-
-
 export async function getCustomersController(req: any, res: any) {
   try {
     const { db } = req.app;

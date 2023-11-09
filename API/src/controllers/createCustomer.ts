@@ -21,12 +21,12 @@ export async function createCustomerController(req: any, res: any) {
       return res.status(400).json({ message: 'Wachtwoord is verplicht.' });
     }
 
-    // controleert of de gebruiker al bestaat
+    // controleert of de gebruikers e-mailadres al bestaat
     const existingCustomer = await db.collection('customers').findOne({
       email: email.toLowerCase()
     });
 
-    //als de gebruiker al bestaat, geeft het een error
+    //als de e-mailadres van de gebruiker al bestaat, geeft het een error
     if (existingCustomer) {
       return res.status(400).json({ message: 'Deze gebruiker bestaat al.' });
     }
@@ -38,8 +38,11 @@ export async function createCustomerController(req: any, res: any) {
       name,
       email: email.toLowerCase(),
       password: await bcrypt.hash(password, saltRounds),
+      qrcode: '',
+      createdAt: new Date(),
     });
 
+    // Code voor het controleren dat het wachtwoord die is ingevoerd wel klopt
     // console.log(bcrypt.compareSync(password, await bcrypt.hash(password, saltRounds)));
 
     //checkt of de gebruiker is aangemaakt in de database en geeft een bericht terug
