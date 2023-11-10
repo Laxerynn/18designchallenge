@@ -7,8 +7,14 @@ int servoPin = 6;
 int pos = 0;
 int knopGroen = 5;
 int knopRood = 8;
-int afstandTriq = 3;
-int afstandEcho = 2;
+
+int afstandTrigFiets = 3;
+int afstandEchoFiets = 2;
+int maxAfstandFiets = 11;
+
+int afstandTrigSpaak = 11;
+int afstandEchoSpaak = 10;
+int maxAfstandSpaak = 7;
 
 long duration;
 int distance;
@@ -23,8 +29,8 @@ void setup() {
   pinMode(ledPinGroen, OUTPUT);
   pinMode(knopGroen, INPUT_PULLUP);
   pinMode(knopRood, INPUT_PULLUP);
-  pinMode(afstandTriq, OUTPUT);
-  pinMode(afstandEcho, INPUT);
+  pinMode(afstandTrigFiets, OUTPUT);
+  pinMode(afstandEchoFiets, INPUT);
   myservo.attach(servoPin);
   digitalWrite(ledPinRood, HIGH);
 }
@@ -42,13 +48,13 @@ void startServo() {
 }
 
 
-int meetAfstand() {
-digitalWrite(afstandTriq, LOW);
+int meetAfstand(int Trig, int Echo) {
+digitalWrite(Trig, LOW);
   delay(2);
-  digitalWrite(afstandTriq, HIGH);
+  digitalWrite(Trig, HIGH);
   delay(100);
-  digitalWrite(afstandTriq, LOW);
-  duration = pulseIn(afstandEcho,HIGH);
+  digitalWrite(Trig, LOW);
+  duration = pulseIn(Echo, HIGH);
 
   distance = duration * 0.032 / 2;
   return distance;
@@ -57,8 +63,10 @@ digitalWrite(afstandTriq, LOW);
 void loop() {
   int buttonStateGroen = digitalRead(knopGroen);
   int buttonStateRood = digitalRead(knopRood);
+  int gemetenAfstandFiets = meetAfstand(afstandTrigFiets, afstandEchoFiets);
+  int gemetenAfstandSpaak = meetAfstand(afstandTrigSpaak, afstandEchoSpaak);
 
-  if (buttonStateGroen == LOW && !ifPressed && distance < 11) {
+  if (buttonStateGroen == LOW && !ifPressed && gemetenAfstandFiets < maxAfstandFiets && gemetenAfstandSpaak > maxAfstandSpaak) {
     ifPressed = true;
   }
     else if (buttonStateRood == LOW && ifPressed)
@@ -66,7 +74,8 @@ void loop() {
     ifPressed = false;
   } 
   
-  int gemetenAfstand = meetAfstand();
+  
+  Serial.println(gemetenAfstandSpaak);
   startServo();
   delay(100);
 }
