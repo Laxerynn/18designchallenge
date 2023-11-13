@@ -8,7 +8,7 @@ async function start() {
 
     const app = express();
 
-    const mongo = await MongoClient.connect('mongodb://localhost:27017/API');
+    const mongo = await MongoClient.connect('mongodb://192.168.157.199:27017/API');
 
     await mongo.connect();
 
