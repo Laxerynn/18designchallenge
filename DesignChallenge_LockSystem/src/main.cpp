@@ -7,6 +7,7 @@ int servoPin = 6;
 int pos = 0;
 int knopGroen = 5;
 int knopRood = 8;
+int buzzer = 12;
 
 int afstandTrigFiets = 3;
 int afstandEchoFiets = 2;
@@ -29,8 +30,14 @@ void setup() {
   pinMode(ledPinGroen, OUTPUT);
   pinMode(knopGroen, INPUT_PULLUP);
   pinMode(knopRood, INPUT_PULLUP);
+  pinMode(buzzer, OUTPUT);
+
   pinMode(afstandTrigFiets, OUTPUT);
   pinMode(afstandEchoFiets, INPUT);
+
+  pinMode(afstandTrigSpaak, OUTPUT);
+  pinMode(afstandEchoSpaak, INPUT);
+
   myservo.attach(servoPin);
   digitalWrite(ledPinRood, HIGH);
 }
@@ -78,5 +85,9 @@ void loop() {
   Serial.println(gemetenAfstandSpaak);
   startServo();
   delay(100);
+  tone(buzzer, 1000);
+  delay(1000);
+  noTone(buzzer); 
+  delay(1000);
 }
 
