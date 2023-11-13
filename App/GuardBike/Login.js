@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Register from './Register';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigation = useNavigation(); // Add this line
 
     const onChangeEmail = (value) => {
         setEmail(value);
@@ -14,7 +18,6 @@ const Login = () => {
     };
 
     const onLogin = async () => {
-        // Add your login logic here
         console.log('Logging in...');
     };
 
@@ -37,6 +40,9 @@ const Login = () => {
                 />
                 <TouchableOpacity style={styles.button} onPress={onLogin}>
                     <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                    <Text style={styles.linkText}>Don't have an account yet? Click here to Register</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -77,6 +83,11 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontSize: 18,
+    },
+    linkText: {
+        color: 'blue',
+        textAlign: 'center',
+        textDecorationLine: 'underline',
     },
 });
 

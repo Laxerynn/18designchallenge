@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet,TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Login from './Login';
+
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -7,8 +10,9 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
-    const onChange = e => {
-        const { name, value } = e.target;
+    const navigation = useNavigation();
+
+    const onChange = (name, value) => {
         if (name === 'name') {
             setName(value);
         } else if (name === 'email') {
@@ -20,12 +24,13 @@ const Register = () => {
         }
     };
 
-    const onSubmit = async e => {
-        e.preventDefault();
+    const onSubmit = async () => {
         if (password !== password2) {
             alert('Passwords do not match');
         } else {
-            // Register logic here
+            console.log('Register pending...');
+            // You can navigate to the login page here
+            navigation.navigate(Login);
         }
     };
 
@@ -37,21 +42,21 @@ const Register = () => {
                     style={styles.input}
                     name="name"
                     value={name}
-                    onChangeText={value => setName(value)}
+                    onChangeText={(value) => onChange('name', value)}
                     placeholder="Name"
                 />
                 <TextInput
                     style={styles.input}
                     name="email"
                     value={email}
-                    onChangeText={value => setEmail(value)}
+                    onChangeText={(value) => onChange('email', value)}
                     placeholder="Email Address"
                 />
                 <TextInput
                     style={styles.input}
                     name="password"
                     value={password}
-                    onChangeText={value => setPassword(value)}
+                    onChangeText={(value) => onChange('password', value)}
                     placeholder="Password"
                     secureTextEntry
                 />
@@ -59,14 +64,16 @@ const Register = () => {
                     style={styles.input}
                     name="password2"
                     value={password2}
-                    onChangeText={value => setPassword2(value)}
+                    onChangeText={(value) => onChange('password2', value)}
                     placeholder="Confirm Password"
                     secureTextEntry
                 />
                 <TouchableOpacity style={styles.button} onPress={onSubmit}>
                     <Text style={styles.buttonText}>Register</Text>
                 </TouchableOpacity>
-                
+                <TouchableOpacity onPress={() => navigation.navigate(Login)}>
+                    <Text style={styles.linkText}>Already have an account? Login here</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -102,10 +109,16 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 10,
     },
     buttonText: {
         color: 'white',
         fontSize: 18,
+    },
+    linkText: {
+        color: 'blue',
+        textAlign: 'center',
+        textDecorationLine: 'underline',
     },
 });
 
