@@ -85,9 +85,5 @@ void loop() {
   Serial.println(gemetenAfstandSpaak);
   startServo();
   delay(100);
-  tone(buzzer, 1000);
-  delay(1000);
-  noTone(buzzer); 
-  delay(1000);
 }
 
