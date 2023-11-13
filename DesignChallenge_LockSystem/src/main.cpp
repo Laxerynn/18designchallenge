@@ -84,6 +84,17 @@ void loop() {
   
   Serial.println(gemetenAfstandSpaak);
   startServo();
-  delay(100);
+
+// Zet de buzzer aan met een frequentie van 1000 Hz
+  tone(buzzer, 1500);
+  delay(500); // Wacht 1 seconde
+
+  // Zet de buzzer aan met een frequentie van 2000 Hz
+  tone(buzzer, 2000);
+  delay(500); // Wacht 1 seconde
+
+  // Stop het geluid
+  noTone(buzzer);
+  delay(200); // Wacht 1 seconde
 }
 
