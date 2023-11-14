@@ -23,7 +23,7 @@ int maxAfstandSpaak = 7;
 int servoDegree = 0;
 
 long duration;
-int afstand;
+int distance;
 bool ifPressed = false;
 Servo myservo;
 
@@ -77,8 +77,8 @@ int meetAfstand(int Trig, int Echo) {
   digitalWrite(Trig, LOW);
   duration = pulseIn(Echo, HIGH);
 
-  afstand = duration * 0.032 / 2;
-  return afstand;
+  distance = duration * 0.032 / 2;
+  return distance;
 }
 
 /*
@@ -100,11 +100,9 @@ void loop() {
     ifPressed = false;
   } 
   
-  
-  Serial.println(gemetenAfstandSpaak);
-  startServo();
-
-// Zet de buzzer aan met een frequentie van 1000 Hz
+  if (ifPressed && gemetenAfstandFiets > 11)
+  {
+    // Zet de buzzer aan met een frequentie van 1000 Hz
   tone(buzzerPin, 1500);
   delay(500); // Wacht 1 seconde
 
@@ -115,5 +113,11 @@ void loop() {
   // Stop het geluid
   noTone(buzzerPin);
   delay(200); // Wacht 1 seconde
+  }
+  
+  
+  Serial.println(gemetenAfstandSpaak);
+  startServo();
+  delay(500);
 }
 
