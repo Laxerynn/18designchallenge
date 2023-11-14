@@ -32,6 +32,7 @@ nav ul {
 nav ul li {
     list-style: none;
     padding: 20px;
+    position: relative;
 }
 nav ul li a {
     text-decoration: none;
@@ -39,10 +40,33 @@ nav ul li a {
     padding: 10px 20px;
 }
 
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0px; /* Afstand onder de tekst aanpassen */
+    left: 0;
+    width: 99%;
+    height: 5px; /* Hoogte van de lijn aanpassen */
+    background-color: #0D41A8; /* Kleur van de lijn aanpassen */
+    transform: scaleX(0);
+    transform-origin: 50%;
+    transition: transform 0.5s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li.pressed a::after {
+    transform: scaleX(1);
+}
+
+nav ul li a.current-page::after {
+    transform: scaleX(1); /* Toon de lijn op de huidige pagina zonder hover */
+}
+
 .inlogknop {
     background-color: #0D41A8;
     border-radius: 30px;
     padding: 10px 20px;
+    transition: 0.5s;
 }
 
 footer {
@@ -50,6 +74,10 @@ footer {
     padding: 20px 150px;
     color: white;
     margin: 0;
+}
+
+footer h3 {
+    font-size: 24px;
 }
 
 .informatie {
@@ -60,4 +88,26 @@ footer {
 
 .kaart {
     border-radius: 30px;
+}
+
+h1 {
+    color: #2267F1;
+}
+
+p {
+    font-size: 20px;
+}
+
+.kaart {
+    border-radius: 30px;
+}
+
+nav ul li.inlogknop a::after {
+    display: none; /* Verberg de onderstreping voor de Inschrijven-knop */
+}
+
+nav ul li.inlogknop:hover {
+    color: white;
+    background-color: #093284;
+    transition: 0.5s;
 }

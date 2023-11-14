@@ -1,0 +1,84 @@
+.alinea1 {
+    margin: 50px 150px;
+    text-align: center;
+}
+
+.alinea2 {
+    margin: 30px 150px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.lock {
+    width: 1557px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-left: 200px;
+}
+
+.alinea3 {
+    background-color: #0D41A8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 100px;
+    margin-bottom: 50px;
+}
+
+.alinea3 h1, .alinea3 h2, .alinea3 p {
+    color: white;
+}
+
+.voordelen {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.voordeel1, .voordeel2, .voordeel3, .voordeel4 {
+    text-align: center;
+}
+
+.alinea4 {
+    margin: 30px 150px;
+}
+
+.alinea4 button {
+    background-color: #2267F1;
+    border: 2px solid #2267F1; /* Blauwe kleur van de rand van de knop in normale toestand */
+    color: #fff; /* Tekstkleur van de knop in normale toestand */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    border-radius: 30px;
+    font-size: 19px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.alinea4 button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #0D41A8, #2267F1);
+    transition: left 0.5s ease;
+
+}
+
+.alinea4 button:hover::before {
+    left: 0;
+}
+
+.alinea4 button:hover {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: white;
+}
