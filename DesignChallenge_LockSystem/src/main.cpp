@@ -1,46 +1,53 @@
 #include <Arduino.h>
 #include <Servo.h>
 
+/*
+Pin initialisatie actuatoren en sensoren.
+Initialisatie variabelen
+*/
+
 int ledPinRood = 7;
 int ledPinGroen = 9;
 int servoPin = 6;
-int pos = 0;
-int knopGroen = 5;
-int knopRood = 8;
-int buzzer = 12;
+int knopPinGroen = 5;
+int knopPinRood = 8;
+int buzzerPin = 12;
 
-int afstandTrigFiets = 3;
-int afstandEchoFiets = 2;
+int fietsTrigPin = 3;
+int fietsEchoPin = 2;
+int spaakTrigPin = 11;
+int spaakEchoPin = 10;
+
 int maxAfstandFiets = 11;
-
-int afstandTrigSpaak = 11;
-int afstandEchoSpaak = 10;
 int maxAfstandSpaak = 7;
+int servoDegree = 0;
 
 long duration;
-int distance;
-
+int afstand;
 bool ifPressed = false;
-
 Servo myservo;
 
 void setup() {
   Serial.begin(9600);
   pinMode(ledPinRood, OUTPUT);
   pinMode(ledPinGroen, OUTPUT);
-  pinMode(knopGroen, INPUT_PULLUP);
-  pinMode(knopRood, INPUT_PULLUP);
-  pinMode(buzzer, OUTPUT);
+  pinMode(knopPinGroen, INPUT_PULLUP);
+  pinMode(knopPinRood, INPUT_PULLUP);
+  pinMode(buzzerPin, OUTPUT);
 
-  pinMode(afstandTrigFiets, OUTPUT);
-  pinMode(afstandEchoFiets, INPUT);
-
-  pinMode(afstandTrigSpaak, OUTPUT);
-  pinMode(afstandEchoSpaak, INPUT);
+  pinMode(fietsTrigPin, OUTPUT);
+  pinMode(fietsEchoPin, INPUT);
+  pinMode(spaakTrigPin, OUTPUT);
+  pinMode(spaakEchoPin, INPUT);
 
   myservo.attach(servoPin);
   digitalWrite(ledPinRood, HIGH);
 }
+
+/*
+Function void startServo()
+Check of knop ingedrukt is voor draaien servo
+*/
 
 void startServo() {
   if (ifPressed) {
@@ -54,24 +61,36 @@ void startServo() {
   }
 }
 
+/*
+Function int meetAfstand()
+Meet de afstand die gemeten word door de sensor
+Trig = meegegeven trigPin
+Echo = meegegeven echoPin
+Geeft vervolgens gemeten afstand terug
+*/
 
 int meetAfstand(int Trig, int Echo) {
-digitalWrite(Trig, LOW);
+  digitalWrite(Trig, LOW);
   delay(2);
   digitalWrite(Trig, HIGH);
   delay(100);
   digitalWrite(Trig, LOW);
   duration = pulseIn(Echo, HIGH);
 
-  distance = duration * 0.032 / 2;
-  return distance;
+  afstand = duration * 0.032 / 2;
+  return afstand;
 }
 
+/*
+Function void loop()
+Leest de buttonstates en afstanden
+*/
+
 void loop() {
-  int buttonStateGroen = digitalRead(knopGroen);
-  int buttonStateRood = digitalRead(knopRood);
-  int gemetenAfstandFiets = meetAfstand(afstandTrigFiets, afstandEchoFiets);
-  int gemetenAfstandSpaak = meetAfstand(afstandTrigSpaak, afstandEchoSpaak);
+  int buttonStateGroen = digitalRead(knopPinGroen);
+  int buttonStateRood = digitalRead(knopPinRood);
+  int gemetenAfstandFiets = meetAfstand(fietsTrigPin, fietsEchoPin);
+  int gemetenAfstandSpaak = meetAfstand(spaakTrigPin, spaakEchoPin);
 
   if (buttonStateGroen == LOW && !ifPressed && gemetenAfstandFiets < maxAfstandFiets && gemetenAfstandSpaak > maxAfstandSpaak) {
     ifPressed = true;
@@ -86,15 +105,15 @@ void loop() {
   startServo();
 
 // Zet de buzzer aan met een frequentie van 1000 Hz
-  tone(buzzer, 1500);
+  tone(buzzerPin, 1500);
   delay(500); // Wacht 1 seconde
 
   // Zet de buzzer aan met een frequentie van 2000 Hz
-  tone(buzzer, 2000);
+  tone(buzzerPin, 2000);
   delay(500); // Wacht 1 seconde
 
   // Stop het geluid
-  noTone(buzzer);
+  noTone(buzzerPin);
   delay(200); // Wacht 1 seconde
 }
 
