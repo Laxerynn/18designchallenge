@@ -22,6 +22,11 @@ int maxAfstandFiets = 11;
 int maxAfstandSpaak = 7;
 int servoDegree = 0;
 
+int buttonStateGroen;
+int buttonStateRood;
+int gemetenAfstandFiets;
+int gemetenAfstandSpaak;
+
 long duration;
 int distance;
 bool ifPressed = false;
@@ -87,10 +92,10 @@ Leest de buttonstates en afstanden
 */
 
 void loop() {
-  int buttonStateGroen = digitalRead(knopPinGroen);
-  int buttonStateRood = digitalRead(knopPinRood);
-  int gemetenAfstandFiets = meetAfstand(fietsTrigPin, fietsEchoPin);
-  int gemetenAfstandSpaak = meetAfstand(spaakTrigPin, spaakEchoPin);
+  buttonStateGroen = digitalRead(knopPinGroen);
+  buttonStateRood = digitalRead(knopPinRood);
+  gemetenAfstandFiets = meetAfstand(fietsTrigPin, fietsEchoPin);
+  gemetenAfstandSpaak = meetAfstand(spaakTrigPin, spaakEchoPin);
 
   if (buttonStateGroen == LOW && !ifPressed && gemetenAfstandFiets < maxAfstandFiets && gemetenAfstandSpaak > maxAfstandSpaak) {
     ifPressed = true;
