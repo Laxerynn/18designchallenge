@@ -28,24 +28,27 @@
         </div>
         <div class="titel">
             <div class="titel-informatie">
-                <h1>Log in</h1>           
+                <h1>Registreer hier</h1>
             </div>
         </div>
     </header>
     <main>
         <div class="container">
-            <h1>Log hier in</h1>
-            <form action="/login" method="post">
-                <label for="gebruikersnaam">E-mail:</label>
+            <h1>Registreer hier onder</h1>
+            <form action="/registreer" method="post">
+                <label for="naam">Volledige naam:</label>
+                <input type="text" id="naam" name="naam" required>            
+                <label for="email">E-mail:</label>
                 <input type="text" id="email" name="email" required>
-            
                 <label for="wachtwoord">Wachtwoord:</label>
                 <input type="password" id="wachtwoord" name="wachtwoord" required>
+                <label for="wachtwoord">Herhaal uw wachtwoord:</label>
+                <input type="password" id="wachtwoord" name="wachtwoord" required>
             
-                <button type="submit">Inloggen</button>
+                <button type="submit">Registreer</button>
             
-                <p class="message">Nog geen account? <a href="registreer.html">Registreer hier</a>.</p>
-            </form> 
+                <p class="message">Heeft u al een account? <a href="inlog.html">Log hier in</a>.</p>
+            </form>
         </div>
     </main>
     <footer>

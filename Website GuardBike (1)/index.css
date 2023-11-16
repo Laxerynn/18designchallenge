@@ -1,35 +1,14 @@
 .alinea1 {
-    margin: 50px 150px;
-    text-align: center;
-}
-
-.alinea2 {
-    margin: 30px 150px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.lock {
-    width: 1557px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 30px;
-    margin-left: 200px;
-}
-
-.alinea3 {
     background-color: #0D41A8;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 100px;
+    padding: 30px 0px;
     margin-bottom: 50px;
 }
 
-.alinea3 h1, .alinea3 h2, .alinea3 p {
+.alinea1 h1, .alinea1 h2, .alinea1 p {
     color: white;
 }
 
@@ -39,15 +18,22 @@
     align-items: center;
 }
 
-.voordeel1, .voordeel2, .voordeel3, .voordeel4 {
+.voordeel1, .voordeel2, .voordeel3 {
     text-align: center;
+    padding: 50px 145px;
 }
 
-.alinea4 {
+.alinea2 {
     margin: 30px 150px;
+    display: flex;
+    justify-content: space-around;
 }
 
-.alinea4 button {
+.alinea2-tekst1 {
+    margin-right: 150px;
+}
+
+.alinea2 button {
     background-color: #2267F1;
     border: 2px solid #2267F1; /* Blauwe kleur van de rand van de knop in normale toestand */
     color: #fff; /* Tekstkleur van de knop in normale toestand */
@@ -61,7 +47,7 @@
     margin-bottom: 30px;
 }
 
-.alinea4 button::before {
+.alinea2 button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -73,11 +59,11 @@
 
 }
 
-.alinea4 button:hover::before {
+.alinea2 button:hover::before {
     left: 0;
 }
 
-.alinea4 button:hover {
+.alinea2 button:hover {
     background-color: transparent;
     border: 2px solid transparent;
     color: white;

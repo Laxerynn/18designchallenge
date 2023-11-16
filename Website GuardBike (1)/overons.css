@@ -1,0 +1,32 @@
+.alinea1 {
+    display: flex;
+    margin: 50px 150px;
+}
+
+.alinea1-tekst {
+    padding-right: 200px;
+}
+
+.bicyclechain {
+    width: 380px;
+    height: 300px;
+    border-radius: 30px;
+}
+
+.alinea2 {
+    display: flex;
+    margin: 30px 150px;
+    margin-bottom: 50px;
+}
+
+.teamfoto {
+    width: 430px;
+    height: 350px;
+    border-radius: 30px;
+    margin-right: 150px;
+}
+
+.alinea3 {
+    margin: 30px 150px;
+    margin-bottom: 50px;
+}
