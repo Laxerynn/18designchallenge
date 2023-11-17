@@ -1,6 +1,7 @@
 .alinea1 {
     display: flex;
     margin: 50px 150px;
+    align-items: center;
 }
 
 .alinea1-tekst {
@@ -17,6 +18,7 @@
     display: flex;
     margin: 30px 150px;
     margin-bottom: 50px;
+    align-items: center;
 }
 
 .teamfoto {
@@ -29,4 +31,156 @@
 .alinea3 {
     margin: 30px 150px;
     margin-bottom: 50px;
+}
+
+.alinea3 ul li {
+    font-size: 20px;
+}
+
+.alinea1-tekst {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.bicyclechain {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea1-tekst.fade-in-left.active,
+.bicyclechain.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.teamfoto {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea2-tekst {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.teamfoto.fade-in-left.active,
+.alinea2-tekst.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.alinea3-tekst {
+    opacity: 0;
+    transform: translateY(30px); /* Start from a lower position */
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea3-tekst.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0); /* Move to normal position when active */
+}
+
+@media (max-width: 1023px) {
+    .alinea1 {
+        margin: 50px;
+    }
+
+    .alinea1-tekst {
+        padding-right: 80px;
+    }
+
+    .bicyclechain {
+        width: 280px;
+        height: 200px;
+    }
+
+    .alinea2 {
+        margin: 30px 50px;
+    }
+
+    .teamfoto {
+        width: 280px;
+        height: 200px;
+        margin-right: 80px;
+    }
+
+    .alinea3 {
+        margin: 30px 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .alinea1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 35px;
+        margin-bottom: 0;
+    }
+
+    .alinea1-tekst {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .alinea2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 35px;
+    }
+
+    .alinea2-tekst {
+        order: 1;
+        margin-bottom: 20px;
+    }
+
+    .teamfoto {
+        order: 2;
+        margin: 0;
+    }
+
+    .alinea3 {
+        margin: 35px 5px;
+    }
+
+    .alinea3 h1 {
+        margin: 5px 35px;
+    }
+
+    .alinea1-tekst {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .bicyclechain {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    .teamfoto {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .alinea2-tekst {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    .alinea3-tekst {
+        opacity: 1;
+        transform: translateY(0); /* Start from a lower position */
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
 }

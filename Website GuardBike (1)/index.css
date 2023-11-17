@@ -68,3 +68,108 @@
     border: 2px solid transparent;
     color: white;
 }
+
+.alinea1 h1 {
+    opacity: 0;
+    transform: translateY(-60px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.voordelen {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea1 h1.fade-in-down.active,
+.voordelen.fade-in-left.active {
+    opacity: 1;
+    transform: translate(0);
+}
+
+
+.alinea2-tekst1 {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea2-tekst2 {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.alinea2-tekst1.fade-in-left.active,
+.alinea2-tekst2.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+@media (max-width: 1023px) {
+    .alinea1 {
+        margin: 0;
+    }
+
+    .voordeel1, .voordeel2, .voordeel3 {
+        padding: 50px;
+    }
+
+    .alinea2 {
+        margin: 30px 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .alinea1 {
+        margin: 0;
+    }
+
+    .voordelen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .voordeel1, .voordeel2, .voordeel3 {
+        padding: 25px;
+    }
+
+    .alinea2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .alinea2-tekst1 {
+        margin: 0;
+    }
+
+    .alinea1 h1 {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .voordelen {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    .alinea2-tekst1 {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    
+    .alinea2-tekst2 {
+        opacity: 2;
+        transform: translateX(0);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+}

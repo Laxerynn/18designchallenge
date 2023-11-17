@@ -1,34 +1,140 @@
 .alinea1 {
     margin: 50px 150px;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea2 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea3 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea4 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea5 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea6 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .alinea7 {
     margin: 30px 160px;
     margin-bottom: 50px;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
+.alinea1.fade-in-left.active,
+.alinea2.fade-in-right.active,
+.alinea3.fade-in-left.active,
+.alinea4.fade-in-right.active,
+.alinea5.fade-in-left.active,
+.alinea6.fade-in-right.active,
+.alinea7.fade-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 1023px) {
+    .alinea1 {
+        margin: 50px;
+    }
+
+    .alinea2 {
+        margin: 30px 50px;
+    }
+
+    .alinea3 {
+        margin: 30px 50px;
+    }
+
+    .alinea4 {
+        margin: 30px 50px;
+    }
+
+    .alinea5 {
+        margin: 30px 50px;
+    }
+
+    .alinea6 {
+        margin: 30px 50px;
+    }
+
+    .alinea7 {
+        margin: 30px 50px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .alinea1 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea2 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea3 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea4 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea5 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea6 {
+        margin: 30px 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    .alinea7 {
+        margin: 35px;
+        opacity: 1;
+        transform: translate(0);
+    }
+}

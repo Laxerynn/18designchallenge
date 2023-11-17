@@ -47,3 +47,31 @@ form {
   .formulier {
     margin-bottom: 40px;
   }
+
+  @media (max-width: 1023px) {
+    .alinea1 {
+        margin: 50px 50px;
+    }
+
+    .alinea2 {
+        margin: 30px 50px;
+    }
+
+    form {
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .alinea1 {
+        margin: 30px 35px;
+    }
+
+    .alinea2 {
+        margin: 30px 35px;
+    }
+
+    form {
+      max-width: 250px;
+    }
+  }
