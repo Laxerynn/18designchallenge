@@ -1,8 +1,8 @@
-import { createCustomerController } from "../controllers/createCustomer";
-import { getCustomerController } from "../controllers/getCustomer";
-import { getCustomersController } from "../controllers/getCustomers";
-import { qrcodeUserUpdateController } from "../controllers/qrcodeUserUpdate";
-import { deleteUserController } from "../controllers/deleteUser";
+import { createCustomerController } from "../controllers/customers/createCustomer";
+import { getCustomerController } from "../controllers/customers/getCustomer";
+import { getCustomersController } from "../controllers/customers/getCustomers";
+import { qrcodeUserUpdateController } from "../controllers/customers/qrcodeUserUpdate";
+import { deleteUserController } from "../controllers/customers/deleteUser";
 
 const express  = require('express');
 

@@ -22,6 +22,7 @@ async function start() {
     // Routes
     app.use('/customers', require('./routes/customers'));
     app.use('/', require('./routes/general'));
+    app.use('/stalling', require('./routes/stalling'));
 
     // Start server
     app.listen(3000, () => {

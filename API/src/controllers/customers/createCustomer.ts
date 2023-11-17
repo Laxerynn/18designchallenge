@@ -39,10 +39,11 @@ export async function createCustomerController(req: any, res: any) {
       email: email.toLowerCase(),
       password: await bcrypt.hash(password, saltRounds),
       qrcode: '',
-      isAdmin: false,
-      bankNumber: '',
       createdAt: new Date(),
     });
+
+    // Code voor het controleren dat het wachtwoord die is ingevoerd wel klopt
+    // console.log(bcrypt.compareSync(password, await bcrypt.hash(password, saltRounds)));
 
     //checkt of de gebruiker is aangemaakt in de database en geeft een bericht terug
     if (result.acknowledged) {
