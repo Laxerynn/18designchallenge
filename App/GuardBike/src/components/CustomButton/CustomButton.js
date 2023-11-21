@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
         borderColor: '#3B71F3',
         borderWidth: 2,
     },
+    container_OPEN : {
+        backgroundColor: 'green',
+    },
+    container_CLOSE : {
+        backgroundColor: 'red',
+    },
     container_TERTIARY : { },
     text: {
         fontWeight: 'bold',

@@ -9,6 +9,8 @@ import ConfirmEmailScreen from '../screens/ConfirmEmail';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../screens/NewPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
+import QRCodeScreen from '../screens/QRCodeScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +25,8 @@ const Navigation = () => {
                 <Stack.Screen name="NewPassword" component={NewPasswordScreen} /> 
 
                 <Stack.Screen name="HomeScreen" component={HomeScreen} /> 
+                <Stack.Screen name="QRCodeScreen" component={QRCodeScreen} /> 
+                <Stack.Screen name="Account" component={AccountScreen} /> 
             </Stack.Navigator>
         </NavigationContainer> 
     );

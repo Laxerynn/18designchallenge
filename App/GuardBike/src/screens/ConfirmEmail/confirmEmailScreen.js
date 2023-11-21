@@ -6,7 +6,7 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 
 import { useNavigation } from '@react-navigation/native';
 
-const confirmEmailScreen = () => {
+const ConfirmEmailScreen = () => {
     const [code, setCode] = useState('');
     const [email, setEmail] = useState('');
 
@@ -104,4 +104,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default confirmEmailScreen;
+export default ConfirmEmailScreen;

@@ -13,7 +13,7 @@ const SignInScreen = () => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
 
-    const apiUrl = 'http://192.168.223.96:3000/login';
+    const apiUrl = 'http://145.93.176.201:3000/login';
 
     const onSignInPressed = async () => {
         try {
@@ -31,7 +31,7 @@ const SignInScreen = () => {
                 const result = await response.json();
                 if (result.status == "SUCESS")
                 {
-                    navigation.navigate('HomeScreen');
+                    navigation.navigate('QRCodeScreen', { id: result.customer._id });
                 }
             } else {
                 const errorMessage = await response.text();

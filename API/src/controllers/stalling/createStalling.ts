@@ -1,7 +1,7 @@
 export async function createStallingController(req: any, res: any) {
   try {
     const { db } = req.app;
-
+    
     const { qrcode } = req.body;
 
     if(!qrcode) {
@@ -22,6 +22,7 @@ export async function createStallingController(req: any, res: any) {
     const saltRounds = 10;
 
     const result = await db.collection('stalling').insertOne({
+        userId: "",
         code: qrcode,
         isScanned: false,
         isOpen: true,

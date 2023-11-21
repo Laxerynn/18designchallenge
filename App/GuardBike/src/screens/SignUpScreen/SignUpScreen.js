@@ -16,31 +16,35 @@ const SignUpScreen = () => {
 
     const navigation = useNavigation();
 
-    const apiUrl = 'http://192.168.223.96:3000/customers';
+    const apiUrl = 'http://145.93.176.201:3000/customers';
 
     const onRegisterPressed = async () => {
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, password }),
-            });
+        if (password == passwordRepeat) {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
 
-            console.log('Response Status:', response.status);
+                console.log('Response Status:', response.status);
 
-            if (response.ok) {
-                const result = await response.json();
-                navigation.navigate('HomeScreen');
-            } else {
-                const errorMessage = await response.text();
-                console.error('API Error:', errorMessage);
-                alert('Inloggen mislukt. Controleer de log voor details.');
+                if (response.ok) {
+                    const result = await response.json();
+                    navigation.navigate('QRCodeScreen', { id: result.customer._id });
+                } else {
+                    const errorMessage = await response.text();
+                    console.error('API Error:', errorMessage);
+                    alert('Inloggen mislukt. Controleer de log voor details.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Er is een fout opgetreden bij het inloggen!' + error);
             }
-        } catch (error) {
-            console.error(error);
-            alert('Er is een fout opgetreden bij het inloggen!' + error);
+        } else {
+            alert('Wachtwoorden komen niet overeen!');
         }
     };
 

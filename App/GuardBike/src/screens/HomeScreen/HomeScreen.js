@@ -1,29 +1,46 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import CustomButton from '../../components/CustomButton/CustomButton';
+// src\screens\HomeScreen\index.js
+import * as React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { useNavigation } from '@react-navigation/native';
+import QRCodeScreen from '../QRCodeScreen';
+import AccountScreen from '../AccountScreen';
+import mapScreen from '../MapScreen';
 
-const index = () => {
-    const navigation = useNavigation();
+const Tab = createBottomTabNavigator();
 
-    const onLogoutPressed = () => {
-        console.warn('Sign out button pressed');
-    
-        //validate
-        navigation.navigate('SignIn');
-    };
+const qrcodeName = 'QRCode';
+const accountName = 'Account';
+const mapName = 'Map';
 
-    return (
-        <View>
-            <Text style={{fontSize: 24, alignSelf: 'center'}}>Home, sweet home</Text>
+const HomeScreenController = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName={QRCodeScreen}
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
+        headerShown: false,
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          let rn = route.name;
 
-            <CustomButton
-                text="Sign Out"
-                onPress={onLogoutPressed}
-            />
-        </View>
-    )
-}
+          if (rn === mapName) {
+            iconName = focused ? 'map' : 'map';
+          } else if (rn === qrcodeName) {
+            iconName = focused ? 'qrcode' : 'qrcode';
+          } else if (rn === accountName) {
+            iconName = focused ? 'home' : 'home';
+          }
 
-export default index
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })} >
+
+      <Tab.Screen name={mapName} component={mapScreen} />
+      <Tab.Screen name={qrcodeName} component={QRCodeScreen} />
+      <Tab.Screen name={accountName} component={AccountScreen} />
+    </Tab.Navigator>
+  );
+};
+
+export default HomeScreenController;
